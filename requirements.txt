@@ -1,0 +1,14 @@
+# Medical Scribe & Triage Tool Dependencies
+
+# Core LLM & Speech-to-Text
+openai
+anthropic
+
+# PII Redaction
+presidio-analyzer
+presidio-anonymizer
+
+# Safety Layer & Utilities
+spacy
+requests
+python-dotenv
