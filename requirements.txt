@@ -12,3 +12,6 @@ presidio-anonymizer
 spacy
 requests
 python-dotenv
+
+# Test Data Generation
+gTTS

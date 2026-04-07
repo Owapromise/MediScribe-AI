@@ -1,0 +1,6 @@
+Doctor: Good morning. I'm Dr. Smith. What brings you in today?
+Patient: Hi Dr. Smith. I'm John Doe. My date of birth is October 12th, 1980. I've been having some mild chest pain for the past few days, and a little shortness of breath.
+Doctor: I see. When exactly does the chest pain start? Is it constant or does it come and go?
+Patient: It mostly happens when I walk up the stairs at my apartment in New York. I also take Lisinopril for my blood pressure, if that helps.
+Doctor: That is helpful to know. We will run an EKG to be safe, and I might adjust your Lisinopril or add another medication depending on the results. Do you have a pharmacy on file?
+Patient: Yes, the CVS on 5th Avenue. You can reach me at 555-123-4567 if you need anything.
