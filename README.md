@@ -1,6 +1,6 @@
 # AI & Clinical Decision Support: Medical Scribe & Triage Tool
 
-![MediScribeAI Screenshot](./MediScribeApp.png.png)
+![MediScribeAI Screenshot](./MediScribeApp.png)
 
 An AI-powered backend designed to reduce clinician burnout by automating medical documentation while ensuring patient safety and data privacy. This tool processes raw doctor-patient audio transcripts, generates structured SOAP notes, and acts as a preliminary clinical triage layer by flagging high-risk symptoms and potential drug-drug interactions.
 
