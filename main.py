@@ -29,7 +29,14 @@ def run_mediscribe_pipeline(audio_path: str, transcript_path: str=None):
     print("\n---Raw Transcript---")
     print(raw_transcript.strip())
 
-    return raw_transcript 
+    # 3. PII Redaction
+    print("\n[3] Redacting PII/PHI...")
+    redacted_transcript = redactor.redact(raw_transcript)
+    
+    print("\n--- Redacted Transcript ---")
+    print(redacted_transcript.strip())
+
+    return redacted_transcript 
 
 
 if __name__ == "__main__":
