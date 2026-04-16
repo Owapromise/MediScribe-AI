@@ -31,3 +31,11 @@ if st.button("Generate Medical Notes", type="primary"):
             with tempfile.NamedTemporaryFile(delete=False, suffix = ".mp3") as temp_file:
                 temp_file.write(uploaded_file.getvalue())
                 temp_file_path = temp_file.name
+                
+            try:
+                # 1. speach to text
+                with st.status("Transcribing audio...",extended=True) as status:
+                    raw_transcript = stt.transcribe_audio(temp_file_path)
+                    st.markdown("**Raw Transcript:**")
+                    st.info(raw_transcript)
+                    status.update(label="🎙️ Audio Transcribed", state="complete", expanded=False)
