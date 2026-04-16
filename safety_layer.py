@@ -23,6 +23,12 @@ class ClinicalSafetyLayer:
         if not text:
             return []
             
+        # Ensure text is a string (LLMs can sometimes return lists of bullet points)
+        if isinstance(text, list):
+            text = " ".join(str(item) for item in text)
+        elif not isinstance(text, str):
+            text = str(text)
+
         text_lower = text.lower()
         flags = []
         for keyword in self.high_risk_keywords:
