@@ -44,6 +44,27 @@ def run_mediscribe_pipeline(audio_path: str, transcript_path: str=None):
     print("\n--- Generated SOAP Note ---")
     print(json.dumps(soap_note, indent=2))
 
+    # 5. Clinical Safety & Triage
+    print("\n[5] Running Clinical Safety Checks...")
+    
+    # Analyze the Subjective section for red flags
+    subjective_text = soap_note.get("Subjective", "")
+    flags = safety_layer.flag_symptoms(subjective_text)
+    
+    print("\n--- Triage Alerts ---")
+    if flags:
+        print(f"⚠️ HIGH RISK SYMPTOMS DETECTED: {', '.join(flags).title()}")
+    else:
+        print("✅ No high-risk symptoms detected.")
+        
+    print("\n--- Drug Interaction Check ---")
+    # Simulating NLP medication extraction for demonstration purposes
+    extracted_meds = ["Lisinopril", "Potassium"] 
+    interactions = safety_layer.check_drug_interactions(extracted_meds)
+    for interaction in interactions:
+        print(f"- {interaction}")
+
+    print("\n=== Pipeline Complete ===")
     return soap_note 
 
 
