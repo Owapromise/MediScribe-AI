@@ -39,3 +39,10 @@ if st.button("Generate Medical Notes", type="primary"):
                     st.markdown("**Raw Transcript:**")
                     st.info(raw_transcript)
                     status.update(label="🎙️ Audio Transcribed", state="complete", expanded=False)
+
+                # 2. PII Redaction
+                with st.status("Redacting PII/PHI...",extended=True) as status:
+                    redacted_transcript = redactor.redact(raw_transcript)
+                    st.markdown("**Redacted Transcript:**")
+                    st.success(redacted_transcript)
+                    status.update(label="🔒 PII Redacted", state="complete", expanded=False)
