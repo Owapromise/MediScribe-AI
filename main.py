@@ -14,8 +14,26 @@ def run_mediscribe_pipeline(audio_path: str, transcript_path: str=None):
     safety_layer = ClinicalSafetyLayer()
     llm = LLMEngine()
 
+    # 2. Transcribe speech to text (Mock transcipt if no API key)
+    print("\n[2] processing Audio / Transcrip...")
+    raw_transcript = ""
+
+    api_key = os.getenv("OPENAI_API_KEY")
+    if (not api_key or api_key.startswith("sk-your-")) and transcript_path:
+        print("Mock mode: Loading pre-generated transcript instead of calling whisper API.")
+        with open(transcript_path, "r") as f:
+            raw_transcript = f.read()
+    else:
+        raw_transcript = stt.transcribe_audio(audio_path)
+
+    print("\n---Raw Transcript---")
+    print(raw_transcript.strip())
+
+    return raw_transcript 
+
 
 if __name__ == "__main__":
-    # Example usage with a sample audio file (ensure you have this file and your .env set up)
-    run_mediscribe_pipeline("sample_visit.mp3")
-    print("\n--- Pipeline Complete ---")
+    audio_file = os.path.join("TestSuite","sample_visit.mp3") 
+    transcript_file = os.path.join("TestSuite","mock_encounter_script.txt")
+
+    run_mediscribe_pipeline(audio_file, transcript_file)
