@@ -1,4 +1,5 @@
 import os
+import json
 from stt_engine import STTEngine
 from pii_redaction import PIIRedactor
 from safety_layer import ClinicalSafetyLayer
@@ -36,7 +37,14 @@ def run_mediscribe_pipeline(audio_path: str, transcript_path: str=None):
     print("\n--- Redacted Transcript ---")
     print(redacted_transcript.strip())
 
-    return redacted_transcript 
+    # 4. LLM SOAP Note Generation
+    print("\n[4] Generating SOAP Note...")
+    soap_note = llm.generate_soap_note(redacted_transcript)
+    
+    print("\n--- Generated SOAP Note ---")
+    print(json.dumps(soap_note, indent=2))
+
+    return soap_note 
 
 
 if __name__ == "__main__":
