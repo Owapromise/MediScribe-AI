@@ -120,3 +120,7 @@ if analyze_btn:
                     st.success(f"**Drug Interactions:** {interaction}", icon="✅")
                 else:
                     st.warning(f"**Drug Interactions:** {interaction}", icon="⚠️")
+            
+            st.markdown("---")
+            if st.button("🔄 Start New Analysis", use_container_width=True):
+                st.rerun()
