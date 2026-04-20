@@ -45,7 +45,7 @@ with st.sidebar:
     st.caption("MediScribeAI v1.2.0 | Encrypted Pipeline")
 
 st.markdown("<h1 class='med-header'>⚕️ MediScribeAI Clinical Dashboard</h1>", unsafe_allow_html=True)
-st.markdown("Automated clinical documentation and real-time safety triage powered by advanced AI.")    
+st.markdown("Automated clinical documentation and real-time safety triage.")    
 
 # initialize Engines
 @st.cache_resource
