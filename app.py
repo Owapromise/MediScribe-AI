@@ -85,12 +85,6 @@ if analyze_btn:
                     time.sleep(0.5)
                     status.update(label="🔒 PII Redacted", state="complete", expanded=False)
                     
-                with st.expander("🔍 View Processed Transcripts"):
-                    st.markdown("**Raw Transcript (Internal Use Only):**")
-                    st.info(raw_transcript)
-                    st.markdown("**Redacted Transcript (Sent to LLM):**")
-                    st.success(redacted_transcript)
-
                 with st.status("📝 Generating SOAP Note...", expanded=True) as status:
                     st.write("Synthesizing clinical notes...")
                     soap_note = llm.generate_soap_note(redacted_transcript)
@@ -108,10 +102,13 @@ if analyze_btn:
                 os.remove(temp_file_path)
 
         with col2:
-            st.subheader("📑 Clinical Output")
-            st.markdown("### Generated SOAP Note")
-            st.json(soap_note)
-            
+            st.subheader("🔍 Diagnostics & Alerts")
+            with st.expander("View Processed Transcripts", expanded=True):
+                st.markdown("**Raw Transcript (Internal Use Only):**")
+                st.info(raw_transcript)
+                st.markdown("**Redacted Transcript:**")
+                st.success(redacted_transcript)
+                
             st.markdown("### 🚨 Triage & Safety Alerts")
             if flags:
                 st.error(f"**High Risk Symptoms Detected:** {', '.join(flags).title()}", icon="🚨")
